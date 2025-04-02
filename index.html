@@ -5,11 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <title>Vue template</title>
 </head>
 <body>
     <div id="app">
         <h1>{{ intro }}</h1>
+        <ul id="a" v-for="animal in animals" :key="animal.id">
+            Dyrets kategori: {{ animal.category }}<br> 
+            Alder: {{ animal.age }}<br>
+            Prisen: {{ animal.price }} kr.-
+        </ul>
+        
+        <div id="addanimal">
+        <input type="text" v-model="category" placeholder="Skriv dyret kategory."><br>
+        <input type="text" v-model="age" placeholder="Indtast hvornår dyret blev født."><br>
+        <input type="text" v-model="price" placeholder="Indtast prisen på dyret.">
+        <button type="submit" @click="postanimal">Tilføj dyr!</button>
+        </div>
     </div>
     
 
